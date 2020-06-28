@@ -2,6 +2,12 @@
 
 In this project, you will build a complete API using Express.js and SQLite for an internal management tool for a comic book publishing company
 
+<a href="https://github.com/StyvenSoft/Quick-posts/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/StyvenSoft/Quick-posts"></a>
+<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/styvensoft/Quick-posts">
+<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/styvensoft/Quick-posts">
+<img alt="GitHub followers" src="https://img.shields.io/github/followers/styvensoft?style=social">
+
+
 ## Project Overview
 
 In this capstone project, you will build all of the routing and database logic for an internal tool for a comic book publishing company called Quick posts.
