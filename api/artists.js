@@ -25,7 +25,7 @@ artistsRouter.get('/', (req, res, next) => {
             if (err) {
                 next(err);
             } else {
-                res.status(200).json({ artists: artists });
+                res.status(200).json({ artist: req.artist });
             }
         });
 })
@@ -95,5 +95,21 @@ artistsRouter.put('/:artistId', (req, res, next) => {
         }
     });
 })
+
+artistsRouter.delete('/:artistId', (req, res, next) => {
+    const sql = 'UPDATE Artist SET is_currently_employed = 0 WHERE Artist.id = $artistId';
+    const value = { $artistId: req.params.artistId };
+
+    db.run(sql, values, (error) => {
+        if (error) {
+            next(error)
+        } else {
+            db.get(`SELECT * FROM Artist.id = ${req.params.artistId}`,
+                (error, artist) => {
+                    res.status(200).json({ artist: artist });
+                });
+        }
+    });
+});
 
 module.exports = artistsRouter; 
