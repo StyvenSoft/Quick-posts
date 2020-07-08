@@ -104,7 +104,7 @@ artistsRouter.delete('/:artistId', (req, res, next) => {
         if (error) {
             next(error)
         } else {
-            db.get(`SELECT * FROM Artist.id = ${req.params.artistId}`,
+            db.get(`SELECT * FROM Artist WHERE Artist.id = ${req.params.artistId}`,
                 (error, artist) => {
                     res.status(200).json({ artist: artist });
                 });
