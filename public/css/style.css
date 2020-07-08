@@ -19,13 +19,17 @@ input {
   border-bottom: 1px solid #2f2f2f;
 }
 
+img.desktop {
+  height: 42px;
+}
+
 .mobile {
   display: none;
 }
 
 .App header {
   padding: .75rem 0;
-  background-color: #2f2f2f;
+  background-color: #616161;
   text-align: center;
 }
 
