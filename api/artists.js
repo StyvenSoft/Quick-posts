@@ -25,7 +25,7 @@ artistsRouter.get('/', (req, res, next) => {
             if (err) {
                 next(err);
             } else {
-                res.status(200).json({ artist: req.artist });
+                res.status(200).json({ artist: artists });
             }
         });
 })
@@ -75,7 +75,10 @@ artistsRouter.put('/:artistId', (req, res, next) => {
         return res.sendStatus(400);
     }
 
-    const sql = 'UPDATE Artist SET name = $name, date_of_birth = $dateOfBirth, biography = $biography, is_currently_employed = $isCurrentlyEmployed WHERE Artist.id = $artistId';
+    const sql =
+    'UPDATE Artist SET name = $name, date_of_birth = $dateOfBirth, ' +
+    'biography = $biography, is_currently_employed = $isCurrentlyEmployed ' +
+    'WHERE Artist.id = $artistId';
     const values = {
         $name: name,
         $dateOfBirth: dateOfBirth,
@@ -90,7 +93,7 @@ artistsRouter.put('/:artistId', (req, res, next) => {
         } else {
             db.get(`SELECT * FROM Artist WHERE Artist.id = ${req.params.artistId}`,
                 (error, artist) => {
-                    res.status(201).json({ artist: artist });
+                    res.status(200).json({ artist: artist });
                 });
         }
     });
@@ -98,7 +101,7 @@ artistsRouter.put('/:artistId', (req, res, next) => {
 
 artistsRouter.delete('/:artistId', (req, res, next) => {
     const sql = 'UPDATE Artist SET is_currently_employed = 0 WHERE Artist.id = $artistId';
-    const value = { $artistId: req.params.artistId };
+    const values = { $artistId: req.params.artistId };
 
     db.run(sql, values, (error) => {
         if (error) {
