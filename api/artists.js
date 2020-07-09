@@ -6,7 +6,7 @@ const db = new sqlite3.Database(process.env.TEST_DATABASE || './database.sqlite'
 
 artistsRouter.param('artistId', (req, res, next, artistId) => {
     const sql = 'SELECT * FROM Artist WHERE Artist.id = $artistId';
-    const values = { $artistId: artistId }
+    const values = { $artistId: artistId };
     db.get(sql, values, (error, artist) => {
         if (error) {
             next(error);
@@ -16,7 +16,7 @@ artistsRouter.param('artistId', (req, res, next, artistId) => {
         } else {
             res.sendStatus(404);
         }
-    })
+    });
 });
 
 artistsRouter.get('/', (req, res, next) => {
@@ -25,22 +25,21 @@ artistsRouter.get('/', (req, res, next) => {
             if (err) {
                 next(err);
             } else {
-                res.status(200).json({ artist: artists });
+                res.status(200).json({ artists: artists });
             }
         });
-})
+});
 
 artistsRouter.get('/:artistId', (req, res, next) => {
     res.status(200).json({ artist: req.artist });
 })
 
 artistsRouter.post('/', (req, res, next) => {
-    const name = req.body.artist.name;
-    const dateOfBirth = req.body.artist.dateOfBirth;
-    const biography = req.body.artist.biography;
-    const isCurrentlyEmployed = req.body.artist.isCurrentlyEmployed === 0 ? 0 : 1;
-
-    if (!name || !dateOfBirth || biography) {
+    const name = req.body.artist.name,
+        dateOfBirth = req.body.artist.dateOfBirth,
+        biography = req.body.artist.biography,
+        isCurrentlyEmployed = req.body.artist.isCurrentlyEmployed === 0 ? 0 : 1;
+    if (!name || !dateOfBirth || !biography) {
         return res.sendStatus(400);
     }
 
@@ -62,23 +61,21 @@ artistsRouter.post('/', (req, res, next) => {
                     res.status(201).json({ artist: artist });
                 });
         }
-    })
-})
+    });
+});
 
 artistsRouter.put('/:artistId', (req, res, next) => {
-    const name = req.body.artist.name;
-    const dateOfBirth = req.body.artist.dateOfBirth;
-    const biography = req.body.artist.biography;
-    const isCurrentlyEmployed = req.body.artist.isCurrentlyEmployed === 0 ? 0 : 1;
-
-    if (!name || !dateOfBirth || biography) {
+    const name = req.body.artist.name,
+        dateOfBirth = req.body.artist.dateOfBirth,
+        biography = req.body.artist.biography,
+        isCurrentlyEmployed = req.body.artist.isCurrentlyEmployed === 0 ? 0 : 1;
+    if (!name || !dateOfBirth || !biography) {
         return res.sendStatus(400);
     }
 
-    const sql =
-    'UPDATE Artist SET name = $name, date_of_birth = $dateOfBirth, ' +
-    'biography = $biography, is_currently_employed = $isCurrentlyEmployed ' +
-    'WHERE Artist.id = $artistId';
+    const sql = 'UPDATE Artist SET name = $name, date_of_birth = $dateOfBirth, ' +
+        'biography = $biography, is_currently_employed = $isCurrentlyEmployed ' +
+        'WHERE Artist.id = $artistId';
     const values = {
         $name: name,
         $dateOfBirth: dateOfBirth,
@@ -97,7 +94,7 @@ artistsRouter.put('/:artistId', (req, res, next) => {
                 });
         }
     });
-})
+});
 
 artistsRouter.delete('/:artistId', (req, res, next) => {
     const sql = 'UPDATE Artist SET is_currently_employed = 0 WHERE Artist.id = $artistId';
