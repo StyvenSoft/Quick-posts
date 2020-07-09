@@ -5,7 +5,6 @@ In this project, you will build a complete API using Express.js and SQLite for a
 <a href="https://github.com/StyvenSoft/Quick-posts/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/StyvenSoft/Quick-posts"></a>
 <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/styvensoft/Quick-posts">
 <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/styvensoft/Quick-posts">
-<a href="https://github.com/StyvenSoft?tab=followers"><img alt="GitHub followers" src="https://img.shields.io/github/followers/styvensoft?style=social"></a>
 
 
 ## Project Overview
@@ -27,6 +26,10 @@ $ git clone https://github.com/StyvenSoft/Quick-posts.git
 ```
 
 To view your local version of the site, open **index.html** in Google Chrome.
+
+## Preview
+
+![Screen](./public/img/screen.png)
 
 ## Implementation Details
 
