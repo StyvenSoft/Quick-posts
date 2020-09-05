@@ -28,7 +28,8 @@
     "react-router-dom": "^4.2.2",
     "sqlite3": "^4.2.0",
     "supertest": "^3.0.0",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "yargs-parser": "^19.0.4"
   },
   "devDependencies": {
     "babel": "^6.23.0",
